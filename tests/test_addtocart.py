@@ -83,8 +83,10 @@ class TestAddToCart:
             assert element is not None
         except NoSuchElementException:
             print("Element not found ")
-            screenshotname = moment.now().strftime("%d-%m-%Y_%H-%M-%S")
-            allure.attach(self.driver.get_screenshot_as_png(), name=screenshotname, attachment_type=allure.attachment_type.PNG)
+            func_name = utils.whoami()
+            current_time = moment.now().strftime("%d-%m-%Y_%H-%M-%S")
+            screenshot_name = func_name + "_" + current_time
+            allure.attach(self.driver.get_screenshot_as_png(), name=screenshot_name, attachment_type=allure.attachment_type.PNG)
         except TimeoutException:
             print("Page load Timeout")
         except AssertionError:
