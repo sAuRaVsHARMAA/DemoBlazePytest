@@ -80,13 +80,12 @@ class TestAddToCart:
             time.sleep(5)
             ua.click_generic("id", "logout2")
             element = driver.find_element(By.XPATH, "logout2")
-            # driver.save_screenshot("")
             assert element is not None
         except NoSuchElementException:
             print("Element not found ")
             screenshotname = moment.now().strftime("%d-%m-%Y_%H-%M-%S")
             allure.attach(self.driver.get_screenshot_as_png(), name=screenshotname, attachment_type=allure.attachment_type.PNG)
-            raise
+
         except TimeoutException:
             print("Page load Timeout")
         except AssertionError:
