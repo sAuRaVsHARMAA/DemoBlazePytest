@@ -79,7 +79,7 @@ class TestAddToCart:
             ua.click_generic("xpath", locator.login_button)
             time.sleep(5)
             ua.click_generic("id", "logout2")
-            element = driver.find_element(By.XPATH, "logout2")
+            element = driver.find_element(By.XPATH, locator.log_in)
             assert element is not None
         except NoSuchElementException:
             print("Element not found ")
