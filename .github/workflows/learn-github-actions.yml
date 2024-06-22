@@ -1,13 +1,24 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+name: Automate CHANGELOG
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  check-bats-version:
+  changelog:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm install -g bats
-      - run: bats -v
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          npm install -g auto-changelog
+      - name: Generate changelog
+        run: |
+          auto-changelog CHANGELOG.md
+      - name: Commit and push changelog
+        run: |
+          git add CHANGELOG.md
+          git commit -m "Automated changelog"
+          git push origin main
