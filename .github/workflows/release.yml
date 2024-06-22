@@ -1,6 +1,9 @@
 name: Automate CHANGELOG
 
-on: [push]
+on:
+  push:
+    branches:
+      - Changelog_test
 
 jobs:
   changelog:
@@ -24,5 +27,5 @@ jobs:
         run: |
           git add CHANGELOG.md
           git commit -m "Automated changelog"
-          git push origin main
+          git push 
 
