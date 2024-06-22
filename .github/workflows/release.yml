@@ -8,12 +8,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: User Details
+        run: |
+          git config --global user.email "saurav.1300@gmail.com"
+          git config --global user.name "sAuRaVsHARMAA"
+
       - name: Install dependencies
         run: |
           npm install -g auto-changelog
-#        run: |
-#          git config --global user.email "saurav.1300@gmail.com"
-#          git config --global user.name "sAuRaVsHARMAA"
+
       - name: Generate changelog
         run: |
           auto-changelog CHANGELOG.md
