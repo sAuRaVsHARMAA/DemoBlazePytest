@@ -21,7 +21,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: | ${{ steps.Changelog.outputs.changelog }}
+          body: | 
+            ${{ steps.Changelog.outputs.changelog }}
         with:
           draft: false
           prerelease: false
