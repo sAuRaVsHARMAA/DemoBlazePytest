@@ -1,4 +1,4 @@
-name: Automate CHANGELOG
+name: Generate changelog
 
 on:
   push:
@@ -13,12 +13,12 @@ jobs:
         uses: actions/checkout@v2
       - name: Install dependencies
         run: |
-          gem install github_changelog_generator
+          npm install -g conventional-changelog-cli
       - name: Generate changelog
         run: |
-          github_changelog_generator --base CHANGELOG.md
+          conventional-changelog-cli -p changelog -i CHANGELOG.md
       - name: Commit and push changelog
         run: |
           git add CHANGELOG.md
           git commit -m "Automated changelog"
-          git push origi main
+          git push origin main
