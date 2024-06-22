@@ -27,5 +27,5 @@ jobs:
         run: |
           git add CHANGELOG.md
           git commit -m "Automated changelog"
-          git push 
+          git push main
 
