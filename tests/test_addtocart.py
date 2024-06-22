@@ -81,6 +81,7 @@ class TestAddToCart:
             ua.click_generic("id", "logout2")
             element = driver.find_element(By.XPATH, locator.log_in)
             assert element is not None
+            driver.find_element(By.N)
         except NoSuchElementException:
             print("Element not found ")
             func_name = Utils.whoami()
